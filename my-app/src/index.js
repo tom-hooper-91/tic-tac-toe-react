@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
+import React, { useState } from "react"
+import ReactDOM from "react-dom"
+import "./index.css"
 
 function Square({ value, onClick }) {
 
@@ -13,15 +13,17 @@ function Square({ value, onClick }) {
 
 function Game() {
 
-    const [ squares, setSquares ] = useState(Array(9).fill(null));
+    const [ squares, setSquares ] = useState(Array(9).fill(null))
+    const [ isXNext, setIsXNext ] = useState(true);
 
     function renderSquare(i) {
         return <Square
         value={squares[i]}
         onClick={() => {
             const nextSquares = squares.slice()
-            nextSquares[i] = 'X'
+            nextSquares[i] = isXNext ? "X" : "O";
             setSquares(nextSquares)
+            setIsXNext(!isXNext)
         }}
         />
     }
@@ -51,4 +53,4 @@ function Game() {
     )
   }
   
-  ReactDOM.render(<Game />, document.getElementById("root"));
+  ReactDOM.render(<Game />, document.getElementById("root"))
